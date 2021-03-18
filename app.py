@@ -18,10 +18,11 @@ def predict():
     int_features = [int(x) for x in request.form.values()]
     final_features = [np.array(int_features)]
     prediction = model.predict(final_features)
+    prediction2 = [np.round(abs(x)) for x in prediction]
 
-    output = round(prediction[0], 2)
+    output = prediction2[0]
 
-    return render_template('index.html', prediction_text='Employee Salary should be $ {}'.format(output))
+    return render_template('index.html', prediction_text='IPL Player Valuation would be $ {}'.format(output))
 
 
 if __name__ == "__main__":
